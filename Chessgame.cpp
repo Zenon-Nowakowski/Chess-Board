@@ -5,7 +5,6 @@ int main()
 {
     //Initialize game
     Board GameBoard;
-    int temp;
     bool checkmate = false; 
 
     GameBoard.generateboard();
@@ -14,7 +13,7 @@ int main()
     {
         GameBoard.displayboard();
 
-        std::cin >> temp;
+        checkmate = true;
     }
 
     return 0;

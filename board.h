@@ -9,6 +9,8 @@ struct Board
     Board();                //Default constructor
     void generateboard();
     void displayboard(); 
+    private: 
+    char table[8][8];       //Game board will be a 2d array, or matrix
 };
 
 Board::Board()
@@ -17,47 +19,71 @@ Board::Board()
 
 void Board::generateboard()
 {
-    char table[8][8];       //Game board will be a 2d array, or matrix
-    for(int i = 0; i > 7; i++)
+    //temp values used to cut down on bloat
+    int temp = 3;
+    int temp2 = 7;
+
+    for(int i = 0; i <= 7; i++)
     {
-        for(int j = 0; j > 7; j++)
+        for(int j = 0; j <= 7; j++)
         {
-            if(i == 0)
+            if(i == 0)                              //the 0th or first row, is filled with special pieces
             {
-                switch (j)
+                 if(j <= 4)
                 {
-                case 0:
-                    table[i][j] = 'T';
-                    break; 
-                case 1:
-                    table[i][j] = 'H';
-                    break;
-                case 2:
-                    table[i][j] = 'B';
-                    break;
-                case 3:
-                    table[i][j] = 'K';
-                    break;
-                case 4:
-                    table[i][j] = 'Q';
-                    break;
+                    switch (j)
+                    {
+                    case 0:
+                        table[i][j] = 'T';
+                        break; 
+                    case 1:
+                        table[i][j] = 'H';
+                        break;
+                    case 2:
+                        table[i][j] = 'B';
+                        break;
+                    case 3:
+                        table[i][j] = 'Q';
+                        break;
+                    case 4:
+                        table[i][j] = 'K';
+                        break;
+                    }
                 }
-                table[i][j] = table[i][j-j%4-2];
+                else
+                {
+                table[i][j] = table[i][j-temp];     //to cut down on reliance on loops within loops, this simply mirrors the other part of the board before Q
+                temp+=2;
+                }
+            }
+            else if(i == 1 || i == 6)
+            {
+                table[i][j] = 'p';
             }
             else if(i == 7)
             {
-
+                std::cout << temp2 << std::endl;    //Mirrors row 0 to row 7 to cut down on bloat 
+                table[i][j] = table[0][temp2];
+                temp2--;
             }
-            else 
-            {
-                table[i][j]= '-';
-            }
+            else
+                table[i][j]= '-';                   //Default perameter, fills as a blank space.
         }
     }
 }
 
 void Board::displayboard()
 {
-    std::cout << "\ntodo";
+    std::cout << "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7  \n";
+    for(int i = 0; i <= 7; i++)
+    {
+        std::cout << i << " | ";
+        for(int j = 0; j <= 7; j++)
+        {
+            std::cout << table[i][j];
+            std::cout << "   ";
+        }
+        std::cout << std::endl;
+    }
 }
 #endif
