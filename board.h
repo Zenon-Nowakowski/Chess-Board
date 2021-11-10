@@ -1,6 +1,9 @@
 #include <iostream> 
 
-class Board
+#ifndef H_board
+#define H_board
+
+struct Board
 {
     public:
     Board();                //Default constructor
@@ -8,15 +11,18 @@ class Board
     void displayboard(); 
 };
 
-Board GameBoard;
+Board::Board()
+{}
 
-void generateboard()
+
+void Board::generateboard()
 {
     char array[8][8];       //Game board will be a 2d array, or matrix
     std::cout << "\ntodo";
 }
 
-void displayboard()
+void Board::displayboard()
 {
     std::cout << "\ntodo";
 }
+#endif

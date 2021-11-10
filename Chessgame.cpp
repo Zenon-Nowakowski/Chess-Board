@@ -3,15 +3,16 @@
 
 int main()
 {
-    //Initial game launch
+    //Initialize game
+    Board GameBoard;
     bool checkmate = false; 
 
     GameBoard.generateboard();
 
     while(checkmate == false)       //Basic game engine
     {
-        int array[1] = {(1,2)};
-        std::cout << array[0] << std::endl;
         GameBoard.displayboard();
     }
+
+    return 0;
 }
