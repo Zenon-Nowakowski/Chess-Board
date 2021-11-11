@@ -1,4 +1,5 @@
 #include <iostream> 
+#include <ctype.h>
 
 #ifndef H_board
 #define H_board
@@ -58,13 +59,15 @@ void Board::generateboard()
             }
             else if(i == 1 || i == 6)
             {
-                table[i][j] = 'p';
+                table[i][j] = 'P';
+                if(i == 6)
+                    table[i][j] = 'p';              //If on bottom side set to lower case
             }
             else if(i == 7)
-            {
-                std::cout << temp2 << std::endl;    //Mirrors row 0 to row 7 to cut down on bloat 
-                table[i][j] = table[0][temp2];
+            { 
+                table[i][j] = tolower(table[0][temp2]);      //Mirrors row 0 to row 7 to cut down on bloat, sets this side as lowercase
                 temp2--;
+
             }
             else
                 table[i][j]= '-';                   //Default perameter, fills as a blank space.
