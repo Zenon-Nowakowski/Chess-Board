@@ -4,14 +4,14 @@
 #ifndef H_board
 #define H_board
 
-struct Board
+class Board
 {
     public:
-    Board();                //Default constructor
+    Board();                                                    //Default constructor
     void generateboard();
     void displayboard(); 
-    private: 
-    char table[8][8];       //Game board will be a 2d array, or matrix
+    protected: 
+    char table[8][8];                                           //Game board will be a 2d array, or matrix
 };
 
 Board::Board()
@@ -28,14 +28,14 @@ void Board::generateboard()
     {
         for(int j = 0; j <= 7; j++)
         {
-            if(i == 0)                              //the 0th or first row, is filled with special pieces
+            if(i == 0)                                          //the 0th or first row, is filled with special pieces
             {
                  if(j <= 4)
                 {
                     switch (j)
                     {
                     case 0:
-                        table[i][j] = 'T';
+                        table[i][j] = 'R';
                         break; 
                     case 1:
                         table[i][j] = 'H';
@@ -53,7 +53,7 @@ void Board::generateboard()
                 }
                 else
                 {
-                table[i][j] = table[i][j-temp];     //to cut down on reliance on loops within loops, this simply mirrors the other part of the board before Q
+                table[i][j] = table[i][j-temp];                 //to cut down on reliance on loops within loops, this simply mirrors the other part of the board before Q
                 temp+=2;
                 }
             }
@@ -61,16 +61,16 @@ void Board::generateboard()
             {
                 table[i][j] = 'P';
                 if(i == 6)
-                    table[i][j] = 'p';              //If on bottom side set to lower case
+                    table[i][j] = 'p';                          //If on bottom side set to lower case
             }
             else if(i == 7)
             { 
-                table[i][j] = tolower(table[0][temp2]);      //Mirrors row 0 to row 7 to cut down on bloat, sets this side as lowercase
+                table[i][j] = tolower(table[0][temp2]);         //Mirrors row 0 to row 7 to cut down on bloat, sets this side as lowercase
                 temp2--;
 
             }
             else
-                table[i][j]= '-';                   //Default perameter, fills as a blank space.
+                table[i][j]= '-';                               //Default perameter, fills as a blank space.
         }
     }
 }
