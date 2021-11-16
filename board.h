@@ -9,10 +9,11 @@ class Board
     public:
     Board();                                                    //Default constructor
     void generateboard();
-    void displayboard(); 
-    protected: 
+    void displayboard();  
     char table[8][8];                                           //Game board will be a 2d array, or matrix
 };
+
+Board GameBoard;
 
 Board::Board()
 {}
