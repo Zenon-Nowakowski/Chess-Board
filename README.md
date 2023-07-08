@@ -1,1 +1,1 @@
-# Graph-based-chess-AI
+A chess board written in C++
